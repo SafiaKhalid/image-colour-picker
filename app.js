@@ -43,8 +43,14 @@ const getImage = (image) => {
 inputForm_form.addEventListener('submit', (e) => {
     e.preventDefault();
     const url = imageUrl_input.value;
-    console.log(url);
-    imageOverlay_div.style.backgroundImage = `url(${url})`;
+
+    console.log(url.slice(-4));
+
+    if (url.slice(-4) == '.jpg' || url.slice(-4) == '.png') {
+        imageOverlay_div.style.backgroundImage = `url(${url})`;
+    } else {
+        console.log('asjkdn');
+    }
 });
 
 /* https://i.etsystatic.com/23987493/r/il/c98206/3159110685/il_570xN.3159110685_1net.jpg */
