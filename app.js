@@ -3,6 +3,7 @@ const imageOverlay_div = document.getElementById('image-overlay');
 const imageContainer_section = document.getElementById('image-container');
 const inputForm_form = document.getElementById('input-form');
 const imageUrl_input = document.getElementById('image-url');
+const alert_p = document.getElementById('alert');
 
 imageContainer_section.addEventListener('dragover', (e) => {
     e.stopPropagation();
@@ -48,8 +49,11 @@ inputForm_form.addEventListener('submit', (e) => {
 
     if (url.slice(-4) == '.jpg' || url.slice(-4) == '.png') {
         imageOverlay_div.style.backgroundImage = `url(${url})`;
-    } else {
-        console.log('asjkdn');
+    } else if (url.slice(-4) !== '.jpg' && url.slice(-4) !== '.png') {
+        alert_p.innerText = 'Only .jpg and .png files supported';
+        setTimeout(() => {
+            alert_p.innerText = '';
+        }, 2000);
     }
 });
 
