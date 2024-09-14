@@ -13,7 +13,11 @@
         <main>
             <section id="image-container">
                 <div id="image-overlay" class="below-stack"></div>
-                <button id="browse-btn">Select image</button>
+                <input
+                    type="file"
+                    accept="image/png, image/jpeg"
+                    id="browse-btn"
+                />
                 <form>
                     <label for="image-url">Paste image url</label>
                     <input type="text" id="image-url" name="image-url" />
