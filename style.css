@@ -26,11 +26,11 @@ body > main > #image-container {
 }
 
 #image-container > #image-overlay {
-    position: absolute;
-    background-color: red;
+    position: absolute;    
     width: 100%;
-    height: 100%;   
-    /* background-image: url(https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/399.png);     */
+    height: 100%;      
+    background-repeat: no-repeat; 
+    background-size: 100% 100%;    
 }
 
 #image-container > .below-stack {

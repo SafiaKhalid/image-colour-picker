@@ -19,5 +19,3 @@ browseBtn_input.addEventListener('change', (e) => {
 
     imageOverlay_div.classList.remove('below-stack');
 });
-
-/* imageContainer_section.style.backgroundColor = 'red'; */
