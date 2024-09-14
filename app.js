@@ -19,3 +19,8 @@ browseBtn_input.addEventListener('change', (e) => {
 
     imageOverlay_div.classList.remove('below-stack');
 });
+
+//Allow url upload
+//Remove images/pick other images
+//select colour (break down?)
+//Style
