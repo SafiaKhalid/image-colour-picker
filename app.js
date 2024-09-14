@@ -38,7 +38,6 @@ const getImage = (image) => {
     imageOverlay_div.classList.remove('below-stack');
 };
 
-//Drag-drop
 //Allow url upload
 //Remove images/pick other images
 //select colour (break down?)
