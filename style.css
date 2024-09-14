@@ -29,7 +29,8 @@ body > main > #image-container {
     position: absolute;
     background-color: red;
     width: 100%;
-    height: 100%;        
+    height: 100%;   
+    /* background-image: url(https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/399.png);     */
 }
 
 #image-container > .below-stack {
