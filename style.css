@@ -37,3 +37,7 @@ body > main > #image-container {
     z-index: -100;
 }
 
+#image-container > #browse-btn {
+    display: none;
+}
+
