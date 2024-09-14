@@ -1,6 +1,7 @@
 const browseBtn_input = document.getElementById('browse-btn');
 const imageOverlay_div = document.getElementById('image-overlay');
 const imageContainer_section = document.getElementById('image-container');
+const inputForm_form = document.getElementById('input-form');
 
 imageContainer_section.addEventListener('dragover', (e) => {
     e.stopPropagation();
@@ -37,6 +38,11 @@ const getImage = (image) => {
 
     imageOverlay_div.classList.remove('below-stack');
 };
+
+inputForm_form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log('submit');
+});
 
 //Allow url upload
 //Remove images/pick other images
