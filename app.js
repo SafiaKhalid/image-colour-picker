@@ -2,6 +2,7 @@ const browseBtn_input = document.getElementById('browse-btn');
 const imageOverlay_div = document.getElementById('image-overlay');
 const imageContainer_section = document.getElementById('image-container');
 const inputForm_form = document.getElementById('input-form');
+const imageUrl_input = document.getElementById('image-url');
 
 imageContainer_section.addEventListener('dragover', (e) => {
     e.stopPropagation();
@@ -41,8 +42,12 @@ const getImage = (image) => {
 
 inputForm_form.addEventListener('submit', (e) => {
     e.preventDefault();
-    console.log('submit');
+    const url = imageUrl_input.value;
+    console.log(url);
+    imageOverlay_div.style.backgroundImage = `url(${url})`;
 });
+
+/* https://i.etsystatic.com/23987493/r/il/c98206/3159110685/il_570xN.3159110685_1net.jpg */
 
 //Allow url upload
 //Remove images/pick other images
