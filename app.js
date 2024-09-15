@@ -81,6 +81,9 @@ const getImage = (image) => {
     if (image) {
         reader.readAsDataURL(image);
     }
+
+    imageOverlay_canvas.classList.remove('below-stack');
+    selectImage_button.classList.add('display-button');
 };
 
 inputForm_form.addEventListener('submit', (e) => {
