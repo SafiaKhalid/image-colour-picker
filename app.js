@@ -60,7 +60,7 @@ inputForm_form.addEventListener('submit', (e) => {
     const url = imageUrl_input.value;
 
     if (url.slice(-4) == '.jpg' || url.slice(-4) == '.png') {
-        imageOverlay_div.style.backgroundImage = `url(${url})`;
+        drawImage(url);
     } else if (url.slice(-4) !== '.jpg' && url.slice(-4) !== '.png') {
         alert_p.innerText = 'Only .jpg and .png files supported';
         setTimeout(() => {
