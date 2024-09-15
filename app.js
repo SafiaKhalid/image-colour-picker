@@ -7,6 +7,8 @@ const alert_p = document.getElementById('alert');
 const selectImage_button = document.getElementById('select-image');
 const coords_p = document.getElementById('coords');
 
+let context = imageOverlay_canvas.getContext('2d');
+
 imageContainer_section.addEventListener('dragover', (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -42,7 +44,6 @@ const getImage = (image) => {
 };
 
 const drawImage = (image) => {
-    let context = imageOverlay_canvas.getContext('2d');
     let newImage = new Image();
     newImage.src = image;
 
@@ -52,7 +53,6 @@ const drawImage = (image) => {
         context.drawImage(newImage, 0, 0, newImage.width, newImage.height);
         imageOverlay_canvas.classList.remove('below-stack');
         selectImage_button.classList.add('display-button');
-        /* console.log(context.getImageData(10, 10, 1, 1).data); */
     };
 };
 
@@ -82,8 +82,8 @@ imageOverlay_canvas.addEventListener('mousemove', (e) => {
                 imageOverlay_canvas.height
         );
 
-        /* console.log({ x, y }); */
         coords_p.textContent = `x: ${x}, Y: ${y}`;
+        console.log(context.getImageData(x, y, 1, 1).data);
     }
 });
 
