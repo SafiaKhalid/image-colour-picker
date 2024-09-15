@@ -5,6 +5,7 @@ const inputForm_form = document.getElementById('input-form');
 const imageUrl_input = document.getElementById('image-url');
 const alert_p = document.getElementById('alert');
 const selectImage_button = document.getElementById('select-image');
+const coords_p = document.getElementById('coords');
 
 imageContainer_section.addEventListener('dragover', (e) => {
     e.stopPropagation();
@@ -81,7 +82,8 @@ imageOverlay_canvas.addEventListener('mousemove', (e) => {
                 imageOverlay_canvas.height
         );
 
-        console.log({ x, y });
+        /* console.log({ x, y }); */
+        coords_p.textContent = `x: ${x}, Y: ${y}`;
     }
 });
 
