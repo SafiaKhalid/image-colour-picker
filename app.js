@@ -4,6 +4,7 @@ const imageContainer_section = document.getElementById('image-container');
 const inputForm_form = document.getElementById('input-form');
 const imageUrl_input = document.getElementById('image-url');
 const alert_p = document.getElementById('alert');
+const selectImage_button = document.getElementById('select-image');
 
 imageContainer_section.addEventListener('dragover', (e) => {
     e.stopPropagation();
@@ -39,6 +40,7 @@ const getImage = (image) => {
     }
 
     imageOverlay_div.classList.remove('below-stack');
+    selectImage_button.classList.add('display-button');
 };
 
 inputForm_form.addEventListener('submit', (e) => {
