@@ -1,5 +1,5 @@
 const browseBtn_input = document.getElementById('browse-btn');
-const imageOverlay_div = document.getElementById('image-overlay');
+const imageOverlay_canvas = document.getElementById('image-overlay');
 const imageContainer_section = document.getElementById('image-container');
 const inputForm_form = document.getElementById('input-form');
 const imageUrl_input = document.getElementById('image-url');
@@ -24,13 +24,22 @@ browseBtn_input.addEventListener('change', (e) => {
     getImage(localImg);
 });
 
-const getImage = (image) => {
+/* const getImage = (image) => {
+    let context = imageOverlay_canvas.getContext('2d');
+    let newImage = new Image();
+
+    newImage.onload = () => {
+        imageOverlay_canvas.width = newImage.width;
+        imageOverlay_canvas.height = newImage.height;
+        context.drawImage(newImage, 0, 0, newImage.width, newImage.height);
+    };
+    
     const reader = new FileReader();
 
     reader.addEventListener(
         'load',
         () => {
-            imageOverlay_div.style.backgroundImage = `url(${reader.result})`;
+            imageOverlay_canvas.style.backgroundImage = `url(${reader.result})`;
         },
         false
     );
@@ -41,6 +50,37 @@ const getImage = (image) => {
 
     imageOverlay_div.classList.remove('below-stack');
     selectImage_button.classList.add('display-button');
+    
+}; */
+
+const getImage = (image) => {
+    const reader = new FileReader();
+
+    reader.addEventListener(
+        'load',
+        () => {
+            let context = imageOverlay_canvas.getContext('2d');
+            let newImage = new Image();
+            newImage.src = reader.result;
+
+            newImage.onload = () => {
+                imageOverlay_canvas.width = newImage.width;
+                imageOverlay_canvas.height = newImage.height;
+                context.drawImage(
+                    newImage,
+                    0,
+                    0,
+                    newImage.width,
+                    newImage.height
+                );
+            };
+        },
+        false
+    );
+
+    if (image) {
+        reader.readAsDataURL(image);
+    }
 };
 
 inputForm_form.addEventListener('submit', (e) => {
