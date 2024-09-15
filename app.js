@@ -69,6 +69,22 @@ inputForm_form.addEventListener('submit', (e) => {
     }
 });
 
+imageOverlay_canvas.addEventListener('mousemove', (e) => {
+    if (!imageOverlay_canvas.classList.contains('below-stack')) {
+        const offset = imageOverlay_canvas.getBoundingClientRect();
+        const x = Math.floor(
+            ((e.clientX - offset.left) / offset.width) *
+                imageOverlay_canvas.width
+        );
+        const y = Math.floor(
+            ((e.clientY - offset.top) / offset.height) *
+                imageOverlay_canvas.height
+        );
+
+        console.log({ x, y });
+    }
+});
+
 /* https://i.etsystatic.com/23987493/r/il/c98206/3159110685/il_570xN.3159110685_1net.jpg */
 
 //select colour (break down?)
