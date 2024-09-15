@@ -24,56 +24,13 @@ browseBtn_input.addEventListener('change', (e) => {
     getImage(localImg);
 });
 
-/* const getImage = (image) => {
-    let context = imageOverlay_canvas.getContext('2d');
-    let newImage = new Image();
-
-    newImage.onload = () => {
-        imageOverlay_canvas.width = newImage.width;
-        imageOverlay_canvas.height = newImage.height;
-        context.drawImage(newImage, 0, 0, newImage.width, newImage.height);
-    };
-    
-    const reader = new FileReader();
-
-    reader.addEventListener(
-        'load',
-        () => {
-            imageOverlay_canvas.style.backgroundImage = `url(${reader.result})`;
-        },
-        false
-    );
-
-    if (image) {
-        reader.readAsDataURL(image);
-    }
-
-    imageOverlay_div.classList.remove('below-stack');
-    selectImage_button.classList.add('display-button');
-    
-}; */
-
 const getImage = (image) => {
     const reader = new FileReader();
 
     reader.addEventListener(
         'load',
         () => {
-            let context = imageOverlay_canvas.getContext('2d');
-            let newImage = new Image();
-            newImage.src = reader.result;
-
-            newImage.onload = () => {
-                imageOverlay_canvas.width = newImage.width;
-                imageOverlay_canvas.height = newImage.height;
-                context.drawImage(
-                    newImage,
-                    0,
-                    0,
-                    newImage.width,
-                    newImage.height
-                );
-            };
+            drawImage(reader.result);
         },
         false
     );
@@ -81,16 +38,26 @@ const getImage = (image) => {
     if (image) {
         reader.readAsDataURL(image);
     }
+};
 
-    imageOverlay_canvas.classList.remove('below-stack');
-    selectImage_button.classList.add('display-button');
+const drawImage = (image) => {
+    let context = imageOverlay_canvas.getContext('2d');
+    let newImage = new Image();
+    newImage.src = image;
+
+    newImage.onload = () => {
+        imageOverlay_canvas.width = newImage.width;
+        imageOverlay_canvas.height = newImage.height;
+        context.drawImage(newImage, 0, 0, newImage.width, newImage.height);
+        imageOverlay_canvas.classList.remove('below-stack');
+        selectImage_button.classList.add('display-button');
+        /* console.log(context.getImageData(10, 10, 1, 1).data); */
+    };
 };
 
 inputForm_form.addEventListener('submit', (e) => {
     e.preventDefault();
     const url = imageUrl_input.value;
-
-    console.log(url.slice(-4));
 
     if (url.slice(-4) == '.jpg' || url.slice(-4) == '.png') {
         imageOverlay_div.style.backgroundImage = `url(${url})`;
