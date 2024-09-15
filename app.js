@@ -61,6 +61,5 @@ inputForm_form.addEventListener('submit', (e) => {
 
 /* https://i.etsystatic.com/23987493/r/il/c98206/3159110685/il_570xN.3159110685_1net.jpg */
 
-//Remove images/pick other images
 //select colour (break down?)
 //Style
