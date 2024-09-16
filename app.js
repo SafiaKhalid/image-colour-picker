@@ -41,7 +41,7 @@ const drawImage = (image) => {
 
 const toHex = (rgba) => {
     const redHex = rgba[0].toString(16);
-    const greenHex = rgba[2].toString(16);
+    const greenHex = rgba[1].toString(16);
     const blueHex = rgba[2].toString(16);
 
     return `#${redHex.length === 1 ? '0' + redHex : redHex}${
@@ -80,6 +80,7 @@ imageOverlay_canvas.addEventListener('mousemove', (e) => {
         );
 
         const hex = toHex(context.getImageData(x, y, 1, 1).data);
+        focusColour_div.style.background = hex;
         hexCode_p.textContent = hex;
     }
 });
