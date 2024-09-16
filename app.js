@@ -2,7 +2,6 @@ const browseBtn_input = document.getElementById('browse-btn');
 const imageOverlay_canvas = document.getElementById('image-overlay');
 const imageContainer_section = document.getElementById('image-container');
 const selectImage_button = document.getElementById('select-image');
-const coords_p = document.getElementById('coords');
 const hexCode_p = document.getElementById('hex-code');
 
 let context = imageOverlay_canvas.getContext('2d', {
@@ -78,10 +77,8 @@ imageOverlay_canvas.addEventListener('mousemove', (e) => {
                 imageOverlay_canvas.height
         );
 
-        coords_p.textContent = `x: ${x}, Y: ${y}`;
         const hex = toHex(context.getImageData(x, y, 1, 1).data);
         hexCode_p.textContent = hex;
-        console.log(context.getImageData(x, y, 1, 1).data);
     }
 });
 
