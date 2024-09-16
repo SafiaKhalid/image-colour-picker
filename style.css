@@ -60,7 +60,7 @@ main > div > #recents-container {
     flex-direction: column;
 }
 
-#recents-container > article {
+#recents-container > #recents-list > article {
     display: flex;
 }
 

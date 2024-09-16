@@ -4,7 +4,7 @@ const imageContainer_section = document.getElementById('image-container');
 const selectImage_button = document.getElementById('select-image');
 const focusColour_div = document.getElementById('focus-colour');
 const hexCode_p = document.getElementById('hex-code');
-const recentsContainer_section = document.getElementById('recents-container');
+const recentsList_div = document.getElementById('recents-list');
 
 let context = imageOverlay_canvas.getContext('2d', {
     willReadFrequently: true,
@@ -67,6 +67,7 @@ imageContainer_section.addEventListener('drop', (e) => {
 
 browseBtn_input.addEventListener('change', (e) => {
     recentColoursArray = [];
+    recentsList_div.textContent = '';
     const localImg = e.target.files[0];
     getImage(localImg);
 });
@@ -93,15 +94,22 @@ imageOverlay_canvas.addEventListener('click', () => {
     if (!imageOverlay_canvas.classList.contains('below-stack')) {
         console.log(hex);
         if (!recentColoursArray.includes(hex)) {
-            recentColoursArray.push(hex);
-            const recentDiv = document.createElement('article');
-            const recentText = document.createElement('p');
-            const recentColour = document.createElement('div');
-            recentText.textContent = hex;
-            recentColour.style.background = hex;
-            recentDiv.appendChild(recentColour);
-            recentDiv.appendChild(recentText);
-            recentsContainer_section.appendChild(recentDiv);
+            recentColoursArray.unshift(hex);
+            if (recentColoursArray.length > 10) {
+                recentColoursArray.pop();
+            }
+            recentsList_div.textContent = '';
+
+            recentColoursArray.forEach((colour) => {
+                const recentArticle = document.createElement('article');
+                const recentText = document.createElement('p');
+                const recentColour = document.createElement('div');
+                recentText.textContent = colour;
+                recentColour.style.background = colour;
+                recentArticle.appendChild(recentColour);
+                recentArticle.appendChild(recentText);
+                recentsList_div.appendChild(recentArticle);
+            });
         }
     }
 });
