@@ -12,7 +12,7 @@
         </header>
         <main>
             <section id="image-container">
-                <div id="image-overlay" class="below-stack"></div>
+                <canvas id="image-overlay" class="below-stack"></canvas>
                 <button
                     id="file-input"
                     onclick="document.getElementById('browse-btn').click()"
@@ -25,12 +25,6 @@
                     accept="image/png, image/jpeg"
                     id="browse-btn"
                 />
-                <form id="input-form">
-                    <label for="image-url">Paste image url</label>
-                    <input type="text" id="image-url" name="image-url" />
-                    <button type="submit">Submit</button>
-                </form>
-                <p id="alert"></p>
             </section>
             <button
                 id="select-image"
@@ -38,6 +32,8 @@
             >
                 Select another image
             </button>
+            <p id="coords"></p>
+            <p id="hex-code"></p>
         </main>
         <script src="/app.js"></script>
     </body>

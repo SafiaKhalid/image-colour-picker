@@ -1,10 +1,13 @@
 const browseBtn_input = document.getElementById('browse-btn');
-const imageOverlay_div = document.getElementById('image-overlay');
+const imageOverlay_canvas = document.getElementById('image-overlay');
 const imageContainer_section = document.getElementById('image-container');
-const inputForm_form = document.getElementById('input-form');
-const imageUrl_input = document.getElementById('image-url');
-const alert_p = document.getElementById('alert');
 const selectImage_button = document.getElementById('select-image');
+const coords_p = document.getElementById('coords');
+const hexCode_p = document.getElementById('hex-code');
+
+let context = imageOverlay_canvas.getContext('2d', {
+    willReadFrequently: true,
+});
 
 imageContainer_section.addEventListener('dragover', (e) => {
     e.stopPropagation();
@@ -30,7 +33,7 @@ const getImage = (image) => {
     reader.addEventListener(
         'load',
         () => {
-            imageOverlay_div.style.backgroundImage = `url(${reader.result})`;
+            drawImage(reader.result);
         },
         false
     );
@@ -38,28 +41,38 @@ const getImage = (image) => {
     if (image) {
         reader.readAsDataURL(image);
     }
-
-    imageOverlay_div.classList.remove('below-stack');
-    selectImage_button.classList.add('display-button');
 };
 
-inputForm_form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const url = imageUrl_input.value;
+const drawImage = (image) => {
+    let newImage = new Image();
+    newImage.src = image;
 
-    console.log(url.slice(-4));
+    newImage.onload = () => {
+        imageOverlay_canvas.width = newImage.width;
+        imageOverlay_canvas.height = newImage.height;
+        context.drawImage(newImage, 0, 0, newImage.width, newImage.height);
+        imageOverlay_canvas.classList.remove('below-stack');
+        selectImage_button.classList.add('display-button');
+    };
+};
 
-    if (url.slice(-4) == '.jpg' || url.slice(-4) == '.png') {
-        imageOverlay_div.style.backgroundImage = `url(${url})`;
-    } else if (url.slice(-4) !== '.jpg' && url.slice(-4) !== '.png') {
-        alert_p.innerText = 'Only .jpg and .png files supported';
-        setTimeout(() => {
-            alert_p.innerText = '';
-        }, 2000);
+imageOverlay_canvas.addEventListener('mousemove', (e) => {
+    if (!imageOverlay_canvas.classList.contains('below-stack')) {
+        const offset = imageOverlay_canvas.getBoundingClientRect();
+        const x = Math.floor(
+            ((e.clientX - offset.left) / offset.width) *
+                imageOverlay_canvas.width
+        );
+        const y = Math.floor(
+            ((e.clientY - offset.top) / offset.height) *
+                imageOverlay_canvas.height
+        );
+
+        coords_p.textContent = `x: ${x}, Y: ${y}`;
+        hexCode_p.textContent = context.getImageData(x, y, 1, 1).data;
+        console.log(context.getImageData(x, y, 1, 1).data);
     }
 });
-
-/* https://i.etsystatic.com/23987493/r/il/c98206/3159110685/il_570xN.3159110685_1net.jpg */
 
 //select colour (break down?)
 //Style
