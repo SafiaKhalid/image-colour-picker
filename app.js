@@ -94,12 +94,14 @@ imageOverlay_canvas.addEventListener('click', () => {
         console.log(hex);
         if (!recentColoursArray.includes(hex)) {
             recentColoursArray.push(hex);
-            const recentDiv = document.createElement('div');
-            recentDiv.textContent = hex;
+            const recentDiv = document.createElement('article');
+            const recentText = document.createElement('p');
+            const recentColour = document.createElement('div');
+            recentText.textContent = hex;
+            recentColour.style.background = hex;
+            recentDiv.appendChild(recentColour);
+            recentDiv.appendChild(recentText);
             recentsContainer_section.appendChild(recentDiv);
-            console.log(recentColoursArray);
-        } else {
-            console.log('duplicate');
         }
     }
 });

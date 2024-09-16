@@ -60,6 +60,17 @@ main > div > #recents-container {
     flex-direction: column;
 }
 
+#recents-container > article {
+    display: flex;
+}
+
+article > div {
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 0.1em solid rgb(74, 74, 74);
+}
+
 main > #select-image {
     display: none;
     height: 2em;
