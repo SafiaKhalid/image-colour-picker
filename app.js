@@ -56,20 +56,6 @@ const drawImage = (image) => {
     };
 };
 
-inputForm_form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const url = imageUrl_input.value;
-
-    if (url.slice(-4) == '.jpg' || url.slice(-4) == '.png') {
-        drawImage(url);
-    } else if (url.slice(-4) !== '.jpg' && url.slice(-4) !== '.png') {
-        alert_p.innerText = 'Only .jpg and .png files supported';
-        setTimeout(() => {
-            alert_p.innerText = '';
-        }, 2000);
-    }
-});
-
 imageOverlay_canvas.addEventListener('mousemove', (e) => {
     if (!imageOverlay_canvas.classList.contains('below-stack')) {
         const offset = imageOverlay_canvas.getBoundingClientRect();
@@ -86,8 +72,6 @@ imageOverlay_canvas.addEventListener('mousemove', (e) => {
         console.log(context.getImageData(x, y, 1, 1).data);
     }
 });
-
-/* https://i.etsystatic.com/23987493/r/il/c98206/3159110685/il_570xN.3159110685_1net.jpg */
 
 //select colour (break down?)
 //Style
