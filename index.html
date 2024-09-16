@@ -12,24 +12,23 @@
         </header>
         <main>
             <div>
-                <section id="image-container">                
-                        <canvas id="image-overlay" class="below-stack"></canvas>
-                        <button
-                            id="file-input"
-                            onclick="document.getElementById('browse-btn').click()"
-                        >
-                            Choose image (or drag/drop image)
-                        </button>
-                        <input type="button" />
-                        <input
-                            type="file"
-                            accept="image/png, image/jpeg"
-                            id="browse-btn"
-                        />                
-                    
+                <section id="image-container">
+                    <canvas id="image-overlay" class="below-stack"></canvas>
+                    <button
+                        id="file-input"
+                        onclick="document.getElementById('browse-btn').click()"
+                    >
+                        Choose image (or drag/drop image)
+                    </button>
+                    <input type="button" />
+                    <input
+                        type="file"
+                        accept="image/png, image/jpeg"
+                        id="browse-btn"
+                    />
                 </section>
-                <section id="recents-container"></section>
-                        <h3>Recent colours</h3>
+                <section id="recents-container">
+                    <h3>Recent colours</h3>
                 </section>
             </div>
             <button

@@ -4,6 +4,7 @@ const imageContainer_section = document.getElementById('image-container');
 const selectImage_button = document.getElementById('select-image');
 const focusColour_div = document.getElementById('focus-colour');
 const hexCode_p = document.getElementById('hex-code');
+const recentsContainer_section = document.getElementById('recents-container');
 
 let context = imageOverlay_canvas.getContext('2d', {
     willReadFrequently: true,
@@ -93,6 +94,9 @@ imageOverlay_canvas.addEventListener('click', () => {
         console.log(hex);
         if (!recentColoursArray.includes(hex)) {
             recentColoursArray.push(hex);
+            const recentDiv = document.createElement('div');
+            recentDiv.textContent = hex;
+            recentsContainer_section.appendChild(recentDiv);
             console.log(recentColoursArray);
         } else {
             console.log('duplicate');
