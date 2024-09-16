@@ -56,3 +56,15 @@ main > #select-image {
 main > #select-image.display-button {
     display: flex;
 }
+
+main > #focus-colour {
+    width: 2em;
+    height: 2em;
+    border: solid 2px black;
+    border-radius: 50%;
+    display: none;
+}
+
+main > #focus-colour.display {
+    display: block;
+}
