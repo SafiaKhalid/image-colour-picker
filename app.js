@@ -8,6 +8,8 @@ const hexCode_p = document.getElementById('hex-code');
 let context = imageOverlay_canvas.getContext('2d', {
     willReadFrequently: true,
 });
+let recentColoursArray = [];
+let hex;
 
 const getImage = (image) => {
     const reader = new FileReader();
@@ -63,6 +65,7 @@ imageContainer_section.addEventListener('drop', (e) => {
 });
 
 browseBtn_input.addEventListener('change', (e) => {
+    recentColoursArray = [];
     const localImg = e.target.files[0];
     getImage(localImg);
 });
@@ -79,9 +82,21 @@ imageOverlay_canvas.addEventListener('mousemove', (e) => {
                 imageOverlay_canvas.height
         );
 
-        const hex = toHex(context.getImageData(x, y, 1, 1).data);
+        hex = toHex(context.getImageData(x, y, 1, 1).data);
         focusColour_div.style.background = hex;
         hexCode_p.textContent = hex;
+    }
+});
+
+imageOverlay_canvas.addEventListener('click', () => {
+    if (!imageOverlay_canvas.classList.contains('below-stack')) {
+        console.log(hex);
+        if (!recentColoursArray.includes(hex)) {
+            recentColoursArray.push(hex);
+            console.log(recentColoursArray);
+        } else {
+            console.log('duplicate');
+        }
     }
 });
 
