@@ -114,5 +114,4 @@ imageOverlay_canvas.addEventListener('click', () => {
     }
 });
 
-//Recent colours list
 //Style
