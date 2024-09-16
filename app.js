@@ -9,24 +9,6 @@ let context = imageOverlay_canvas.getContext('2d', {
     willReadFrequently: true,
 });
 
-imageContainer_section.addEventListener('dragover', (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    e.dataTransfer.dropEffect = 'copy';
-});
-
-imageContainer_section.addEventListener('drop', (e) => {
-    e.stopPropagation();
-    e.preventDefault();
-    const localImg = e.dataTransfer.files[0];
-    getImage(localImg);
-});
-
-browseBtn_input.addEventListener('change', (e) => {
-    const localImg = e.target.files[0];
-    getImage(localImg);
-});
-
 const getImage = (image) => {
     const reader = new FileReader();
 
@@ -56,6 +38,34 @@ const drawImage = (image) => {
     };
 };
 
+const toHex = (rgba) => {
+    const redHex = rgba[0].toString(16);
+    const greenHex = rgba[2].toString(16);
+    const blueHex = rgba[2].toString(16);
+
+    return `#${redHex.length === 1 ? '0' + redHex : redHex}${
+        greenHex.length === 1 ? '0' + greenHex : greenHex
+    }${blueHex.length === 1 ? '0' + blueHex : blueHex}`;
+};
+
+imageContainer_section.addEventListener('dragover', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'copy';
+});
+
+imageContainer_section.addEventListener('drop', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const localImg = e.dataTransfer.files[0];
+    getImage(localImg);
+});
+
+browseBtn_input.addEventListener('change', (e) => {
+    const localImg = e.target.files[0];
+    getImage(localImg);
+});
+
 imageOverlay_canvas.addEventListener('mousemove', (e) => {
     if (!imageOverlay_canvas.classList.contains('below-stack')) {
         const offset = imageOverlay_canvas.getBoundingClientRect();
@@ -69,7 +79,8 @@ imageOverlay_canvas.addEventListener('mousemove', (e) => {
         );
 
         coords_p.textContent = `x: ${x}, Y: ${y}`;
-        hexCode_p.textContent = context.getImageData(x, y, 1, 1).data;
+        const hex = toHex(context.getImageData(x, y, 1, 1).data);
+        hexCode_p.textContent = hex;
         console.log(context.getImageData(x, y, 1, 1).data);
     }
 });
