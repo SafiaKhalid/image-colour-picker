@@ -85,5 +85,5 @@ imageOverlay_canvas.addEventListener('mousemove', (e) => {
     }
 });
 
-//select colour (break down?)
+//Recent colours list
 //Style
