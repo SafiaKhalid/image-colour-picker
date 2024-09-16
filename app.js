@@ -4,10 +4,13 @@ const imageContainer_section = document.getElementById('image-container');
 const selectImage_button = document.getElementById('select-image');
 const focusColour_div = document.getElementById('focus-colour');
 const hexCode_p = document.getElementById('hex-code');
+const recentsList_div = document.getElementById('recents-list');
 
 let context = imageOverlay_canvas.getContext('2d', {
     willReadFrequently: true,
 });
+let recentColoursArray = [];
+let hex;
 
 const getImage = (image) => {
     const reader = new FileReader();
@@ -63,6 +66,8 @@ imageContainer_section.addEventListener('drop', (e) => {
 });
 
 browseBtn_input.addEventListener('change', (e) => {
+    recentColoursArray = [];
+    recentsList_div.textContent = '';
     const localImg = e.target.files[0];
     getImage(localImg);
 });
@@ -79,11 +84,34 @@ imageOverlay_canvas.addEventListener('mousemove', (e) => {
                 imageOverlay_canvas.height
         );
 
-        const hex = toHex(context.getImageData(x, y, 1, 1).data);
+        hex = toHex(context.getImageData(x, y, 1, 1).data);
         focusColour_div.style.background = hex;
         hexCode_p.textContent = hex;
     }
 });
 
-//Recent colours list
+imageOverlay_canvas.addEventListener('click', () => {
+    if (!imageOverlay_canvas.classList.contains('below-stack')) {
+        console.log(hex);
+        if (!recentColoursArray.includes(hex)) {
+            recentColoursArray.unshift(hex);
+            if (recentColoursArray.length > 10) {
+                recentColoursArray.pop();
+            }
+            recentsList_div.textContent = '';
+
+            recentColoursArray.forEach((colour) => {
+                const recentArticle = document.createElement('article');
+                const recentText = document.createElement('p');
+                const recentColour = document.createElement('div');
+                recentText.textContent = colour;
+                recentColour.style.background = colour;
+                recentArticle.appendChild(recentColour);
+                recentArticle.appendChild(recentText);
+                recentsList_div.appendChild(recentArticle);
+            });
+        }
+    }
+});
+
 //Style
