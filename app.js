@@ -2,6 +2,7 @@ const browseBtn_input = document.getElementById('browse-btn');
 const imageOverlay_canvas = document.getElementById('image-overlay');
 const imageContainer_section = document.getElementById('image-container');
 const selectImage_button = document.getElementById('select-image');
+const focusColour_div = document.getElementById('focus-colour');
 const hexCode_p = document.getElementById('hex-code');
 
 let context = imageOverlay_canvas.getContext('2d', {
@@ -34,6 +35,7 @@ const drawImage = (image) => {
         context.drawImage(newImage, 0, 0, newImage.width, newImage.height);
         imageOverlay_canvas.classList.remove('below-stack');
         selectImage_button.classList.add('display-button');
+        focusColour_div.classList.add('display');
     };
 };
 
