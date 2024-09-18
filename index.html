@@ -3,14 +3,16 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="/style.css" />
         <title>Image Colour Picker</title>
     </head>
     <body>
-        <header>
-            <h1>Image Colour Picker</h1>
-        </header>
         <main>
+            <h1>Image Colour Picker</h1>
+
             <div>
                 <section id="image-container">
                     <canvas id="image-overlay" class="below-stack"></canvas>
@@ -19,28 +21,34 @@
                         onclick="document.getElementById('browse-btn').click()"
                     >
                         Choose image (or drag/drop image)
-                    </button>
-                    <input type="button" />
+                    </button>                    
                     <input
                         type="file"
                         accept="image/png, image/jpeg"
                         id="browse-btn"
                     />
                 </section>
-                <section id="recents-container">
+                <aside id="recents-container">
                     <h3>Recent colours</h3>
                     <div id="recents-list"></div>
-                </section>
+                </aside>
             </div>
-            <button
-                id="select-image"
-                onclick="document.getElementById('browse-btn').click()"
-            >
-                Select another image
-            </button>
-            <div id="focus-colour"></div>
-            <p id="hex-code"></p>
+
+            <div id="button-colour-section">
+                <button
+                    id="select-image"
+                    onclick="document.getElementById('browse-btn').click()"
+                >
+                    Select another image
+                </button>
+                <section id="focus-container">
+                    <div id="focus-colour"></div>
+                    <p id="hex-code"></p>
+                </div>
+            </div>
+            
         </main>
+
         <script src="/app.js"></script>
     </body>
 </html>
