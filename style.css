@@ -1,40 +1,46 @@
 * {
     margin: 0;
-    padding: 0;
+    padding: 0;    
     box-sizing: border-box;    
+    font-family: "Montserrat", sans-serif;
+    color: #2a2a2a;
 }
 
 body {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    height: 100vh;    
+    display: flex;        
     justify-content: center;
     gap: 2em;
 }
 
-body > main {
+body > main {     
+    margin-top: 3em;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1.5em;
+    align-items: center;        
+    gap: 1em;
 }
 
 main > div {
+    margin-top: 2em;
+    margin-bottom: 0.5em;
     display: flex;
-    gap: 2em;
+    gap: 2.5em;
 }
 
-body > main > div > #image-container {
-    border: 2px solid black;
-    width: 40em;
-    height: 40em;
+body > main > div > #image-container {    
+    border: 2px solid #2a2a2a;
+    width: 22.5em;
+    height: 22.5em;
+    padding: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 2em;
     position: relative;
+    cursor: pointer;
+    border-radius: 0.5em;
 }
 
 #image-container > #image-overlay {
@@ -47,6 +53,17 @@ body > main > div > #image-container {
     background-size: 100% 100%;        
 }
 
+#image-container > #file-input {
+    background: none;
+    border: none;
+    font-size: 1.25em;
+}
+
+#image-container > #file-input:hover {
+    color: rgb(85, 85, 85);
+    cursor: pointer;
+}
+
 #image-container > .below-stack {
     z-index: -100;
 }
@@ -55,39 +72,67 @@ body > main > div > #image-container {
     display: none;
 }
 
-main > div > #recents-container {
+div > #recents-container {
     display: flex;
     flex-direction: column;
+    gap: 1em;
+}
+
+#recents-container > #recents-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
 }
 
 #recents-container > #recents-list > article {
     display: flex;
+    align-items: center;
+    gap: 0.75em;
 }
 
-article > div {
-    width: 1em;
-    height: 1em;
-    border-radius: 50%;
-    border: 0.1em solid rgb(74, 74, 74);
-}
-
-main > #select-image {
+#button-colour-section > #select-image {
     display: none;
-    height: 2em;
+    height: 2em;        
 }
 
-main > #select-image.display-button {
+#button-colour-section > #select-image:hover {
+    color: rgb(85, 85, 85);
+}
+
+main > #button-colour-section {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+    height: 5em;    
 }
 
-main > #focus-colour {
+main > #button-colour-section > #select-image.display-button {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background: none;
+    font-size: 1.25em;
+}
+
+main > #button-colour-section > #focus-container {
+    display: flex;
+    align-items: center;    
+    justify-content: center;
+    gap: 0.75em;
+}
+
+#focus-container > #focus-colour {
     width: 2em;
     height: 2em;
-    border: solid 2px black;
+    border: solid 2px #2a2a2a;
     border-radius: 50%;
     display: none;
 }
 
-main > #focus-colour.display {
+#focus-container > #focus-colour.display {
     display: block;
 }
