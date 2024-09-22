@@ -35,8 +35,8 @@ main > div {
 
 body > main > div > #image-container {    
     border: 2px solid #2a2a2a;
-    width: 22.5em;
-    height: 22.5em;
+    width: 55%;
+    aspect-ratio: 1/1;
     padding: 1em;
     display: flex;
     flex-direction: column;
@@ -156,4 +156,33 @@ main > #button-colour-section > #focus-container {
 
 #focus-container > #focus-colour.display {
     display: block;
+}
+
+@media only screen and (max-width: 610px) {
+    main > h1 {
+        text-align: center;
+    }
+    
+    main > div {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    div > #image-container {
+        align-self: center;
+    }
+
+    div > #recents-container {
+        margin: 10px;        
+    }
+
+    #recents-container > #recents-list {
+        display: grid;
+        /* grid-template-rows: repeat(2, 1fr); */
+        grid-template-columns: repeat(auto-fill, 7em);        
+    }
+
+    #recents-container > #recents-list > article {
+        gap: 0.25em;
+    }
 }
