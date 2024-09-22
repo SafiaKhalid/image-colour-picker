@@ -47,6 +47,11 @@ body > main > div > #image-container {
     border-radius: 0.5em;
 }
 
+div > #image-container.large {
+    width: 35em;
+    height: 35em;
+}
+
 #image-container > #image-overlay {
     position: absolute;    
     top: 0;
