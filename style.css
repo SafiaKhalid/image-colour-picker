@@ -82,6 +82,10 @@ div > #recents-container {
     gap: 1em;
 }
 
+div > #recents-container.hidden {
+    display: none;
+}
+
 #recents-container > #recents-list {
     display: flex;
     flex-direction: column;
