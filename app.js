@@ -5,6 +5,7 @@ const selectImage_button = document.getElementById('select-image');
 const focusColour_div = document.getElementById('focus-colour');
 const hexCode_p = document.getElementById('hex-code');
 const recentsList_div = document.getElementById('recents-list');
+const recentsContainer_aside = document.getElementById('recents-container');
 
 let context = imageOverlay_canvas.getContext('2d', {
     willReadFrequently: true,
@@ -39,6 +40,8 @@ const drawImage = (image) => {
         imageOverlay_canvas.classList.remove('below-stack');
         selectImage_button.classList.add('display-button');
         focusColour_div.classList.add('display');
+        recentsContainer_aside.classList.remove('hidden');
+        imageContainer_section.classList.remove('large');
     };
 };
 
