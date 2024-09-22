@@ -41,6 +41,7 @@ const drawImage = (image) => {
         selectImage_button.classList.add('display-button');
         focusColour_div.classList.add('display');
         recentsContainer_aside.classList.remove('hidden');
+        imageContainer_section.classList.remove('large');
     };
 };
 
