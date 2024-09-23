@@ -23,7 +23,7 @@ body > main {
 }
 
 main > h1 {
-    font-size: 3em;
+    font-size: 3em;    
 }
 
 main > div {
@@ -160,9 +160,12 @@ main > #button-colour-section > #focus-container {
 
 @media only screen and (max-width: 610px) {
     main > h1 {
-        text-align: center;
+        text-align: center;                
+        font-size: 2.5em;          
+        width: 100%;            
+        height: fit-content;
     }
-    
+
     main > div {
         flex-direction: column;
         width: 100%;
@@ -170,6 +173,11 @@ main > #button-colour-section > #focus-container {
 
     div > #image-container {
         align-self: center;
+    }
+
+    div > #image-container.large {        
+        width: 50%;        
+        aspect-ratio: 1 / 1;
     }
 
     div > #recents-container {
@@ -186,3 +194,5 @@ main > #button-colour-section > #focus-container {
         gap: 0.25em;
     }
 }
+
+/* initial large image container too large */
