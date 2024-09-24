@@ -17,13 +17,13 @@ body {
 
 body > main {         
     display: flex;
-    flex-direction: column;
-    /* align-items: center;   */      
+    flex-direction: column;          
     gap: 1em;
 }
 
 main > h1 {
-    font-size: 3em;        
+    font-size: 3em;   
+    margin-top: 1em;              
 }
 
 main > div {
@@ -31,6 +31,7 @@ main > div {
     margin-bottom: 0.5em;
     display: flex;
     gap: 2.5em;
+    justify-content: center;
 }
 
 body > main > div > #image-container {    
@@ -49,8 +50,8 @@ body > main > div > #image-container {
 }
 
 div > #image-container.large {
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 70%;
 }
 
 #image-container > #image-overlay {
@@ -163,8 +164,7 @@ main > #button-colour-section > #focus-container {
         text-align: center;                
         font-size: 2em;          
         width: 100%;            
-        height: fit-content;   
-        margin-top: 1em;     
+        height: fit-content;              
     }
 
     main > div {
