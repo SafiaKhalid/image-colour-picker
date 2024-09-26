@@ -4,3 +4,6 @@ Allows user to select image stored in device and have hex code of colour cursor 
 
 
 ![Screenshot 2024-09-26 104628](https://github.com/user-attachments/assets/49b876cb-fe1e-453b-b7d7-8ee6259d9620)
+
+
+![Screenshot 2024-09-26 105339](https://github.com/user-attachments/assets/e2f60be1-e84c-4cdb-864b-1eff9bfa5b25)
